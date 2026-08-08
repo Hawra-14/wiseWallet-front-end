@@ -13,9 +13,14 @@ const Nav = (props) => {
             <Link className="nav-brand" to="/">wiseWallet</Link>
             { props.user ? (
                 <ul>
-                    <li>Welcome, {props.user.username}!</li>
                     <li>
                         <Link to="/">Dashboard</Link>
+                    </li>
+                    <li>
+                        <Link to="/This-month">This month</Link>
+                    </li>
+                    <li>
+                        <Link to="/Add-new">Add</Link>
                     </li>
                     <li>
                         <Link to="/" onClick={handleSignOut}>Sign Out</Link>
