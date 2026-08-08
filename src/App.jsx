@@ -1,8 +1,8 @@
 import Nav from "./components/Nav"
-import SignUpForm from "./pages/SignUpForm"
 import './App.css'
 import { Routes, Route } from "react-router"
 import { useState } from "react"
+import SignUpForm from "./pages/SignUpForm"
 import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
