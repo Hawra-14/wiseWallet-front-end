@@ -17,10 +17,10 @@ const Nav = (props) => {
                         <Link to="/">Dashboard</Link>
                     </li>
                     <li>
-                        <Link to="/This-month">This month</Link>
+                        <Link to="/This-month">This Month</Link>
                     </li>
                     <li>
-                        <Link to="/Add-new">Add</Link>
+                        <Link to="/Add-new">Add Transaction</Link>
                     </li>
                     <li>
                         <Link to="/" onClick={handleSignOut}>Sign Out</Link>
