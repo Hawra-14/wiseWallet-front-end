@@ -10,9 +10,12 @@ const TransactionDetails = (props) => {
     return (
         <main>
             <h1>Transaction: {transaction.name}</h1>
-            <p>Amount: {transaction.amount}</p>
-            <p>Expense Category: {transaction.expenseCategory}</p>
-            <p>Income Category: {transaction.incomeCategory}</p>
+            <p>Amount: {transaction.amount} BD</p>
+            {transaction.isIncome ? (
+                <p>Income Category: {transaction.incomeCategory}</p>
+            ) : (
+                <p>Expense Category: {transaction.expenseCategory}</p>
+            )}
             <p>Month: {transaction.month}</p>
         </main>
     )
