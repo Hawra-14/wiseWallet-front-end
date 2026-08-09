@@ -98,3 +98,25 @@ button:disabled {
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
+
+.income-card {
+  /* background-color: green; */
+  width: 100%;
+  max-width: 440px;
+  padding: 32px;
+  background-color: var(--color-surface);
+  border: 3px solid green;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.expense-card {
+  /* background-color: red; */
+  width: 100%;
+  max-width: 440px;
+  padding: 32px;
+  background-color: var(--color-surface);
+  border: 3px solid red;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
