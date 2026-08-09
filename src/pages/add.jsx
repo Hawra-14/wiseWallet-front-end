@@ -48,6 +48,8 @@ const Add = (props) => {
           <option value="November">November</option>
           <option value="December">December</option>
         </select>
+        <label htmlFor="income">Income <input type="checkbox" /></label>
+        <br />
         <label htmlFor="expenseCat">Category:</label>
         <select>
           <option value="">Select a category</option>
@@ -76,6 +78,8 @@ const Add = (props) => {
           <option value="other">Other</option>
         </select>
         
+        <label htmlFor="amount">Amount</label>
+        <input type="number" required />
       </form>
     </main>
   );

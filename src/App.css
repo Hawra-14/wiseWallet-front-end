@@ -46,7 +46,7 @@ form {
   font-weight: 600;
 }
 
-form input {
+form input , select{
   padding: 12px;
   border-radius: 8px;
   border: 1px solid var(--color-primary);
@@ -95,6 +95,28 @@ button:disabled {
   padding: 32px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.income-card {
+  /* background-color: green; */
+  width: 100%;
+  max-width: 440px;
+  padding: 32px;
+  background-color: var(--color-surface);
+  border: 3px solid green;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.expense-card {
+  /* background-color: red; */
+  width: 100%;
+  max-width: 440px;
+  padding: 32px;
+  background-color: var(--color-surface);
+  border: 3px solid red;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
