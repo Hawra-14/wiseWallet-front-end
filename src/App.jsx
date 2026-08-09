@@ -1,39 +1,71 @@
-import Nav from "./components/Nav"
-import './App.css'
-import { Routes, Route } from "react-router"
-import { useState } from "react"
-import SignUpForm from "./pages/SignUpForm"
-import SignInForm from "./pages/SignInForm"
-import Landing from "./pages/Landing"
-import Dashboard from "./pages/Dashboard"
-import TransactionList from "./pages/TransactionList"
-import Add from "./pages/Add"
+import Nav from "./components/Nav";
+import "./App.css";
+
+import { Routes, Route } from "react-router";
+import { useState, useEffect } from "react";
+import * as transactionService from "./services/transactions";
+
+import SignUpForm from "./pages/SignUpForm";
+import SignInForm from "./pages/SignInForm";
+import Landing from "./pages/Landing";
+import Dashboard from "./pages/Dashboard";
+import TransactionList from "./pages/TransactionList";
+import Add from "./pages/Add";
 
 const getUserFromToken = () => {
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
 
-  if (!token) return null
+  if (!token) return null;
 
-  return JSON.parse(atob(token.split('.')[1])).payload
-}
+  return JSON.parse(atob(token.split(".")[1])).payload;
+};
 
 const App = () => {
+  const [user, setUser] = useState(getUserFromToken());
+  const [transactions, setTransactions] = useState([]);
 
-  const [user, setUser] = useState(getUserFromToken())
-  
+  useEffect(() => {
+    const fetchAllTransactions = async () => {
+      const transactionsData = await transactionService.index();
+
+      setTransactions(transactionsData);
+    };
+    if (user) fetchAllTransactions();
+  }, [user]);
+
   return (
     <div>
       <Nav user={user} setUser={setUser} />
       <main className="app-main">
-      <Routes>
-        <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
-        <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
-        <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
-        <Route path='/add-transaction' element={<Add />} />
-      </Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={user ? <Dashboard user={user} /> : <Landing />}
+          />
+          {user ? (
+            <>
+              <Route
+                path="/transactions"
+                element={<TransactionList transactions={transactions} />}
+              />
+              <Route path="/add-transaction" element={<Add />} />
+            </>
+          ) : (
+            <>
+              <Route
+                path="/sign-up"
+                element={<SignUpForm setUser={setUser} />}
+              />
+              <Route
+                path="/sign-in"
+                element={<SignInForm setUser={setUser} />}
+              />
+            </>
+          )}
+        </Routes>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

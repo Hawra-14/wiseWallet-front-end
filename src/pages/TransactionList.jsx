@@ -1,8 +1,13 @@
 const TransactionList = (props) => {
-return (
-    <main>
-        Transaction List
-    </main>
-)
+    
+    return (
+        <main>
+            <h1>All Transactions</h1>
+            {props.transactions.map((transaction) => (
+                <p>{transaction.name}</p>
+            ))}
+        </main>
+    )
 }
+
 export default TransactionList;
