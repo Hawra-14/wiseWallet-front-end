@@ -1,15 +1,17 @@
 import Nav from "./components/Nav";
 import "./App.css";
 
-import { Routes, Route } from "react-router";
-import { useState, useEffect } from "react";
-import * as transactionService from "./services/transactions";
+import { Routes, Route } from "react-router"
+import { useState, useEffect } from "react"
+import * as transactionService from './services/transactions'
+
 
 import SignUpForm from "./pages/SignUpForm";
 import SignInForm from "./pages/SignInForm";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import TransactionList from "./pages/TransactionList";
+import TransactionDetails from "./pages/TranscationDetails"
 import Add from "./pages/Add";
 
 const getUserFromToken = () => {
@@ -44,11 +46,8 @@ const App = () => {
           />
           {user ? (
             <>
-              <Route
-                path="/transactions"
-                element={<TransactionList transactions={transactions} />}
-              />
-              <Route path="/add-transaction" element={<Add setUser={setUser}/>} />
+              <Route path='/transactions' element={<TransactionList transactions={transactions}/>} />
+              <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions}/>} />
             </>
           ) : (
             <>
