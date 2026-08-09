@@ -6,6 +6,7 @@ import SignUpForm from "./pages/SignUpForm"
 import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
+import TransactionList from "./pages/TransactionList"
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
