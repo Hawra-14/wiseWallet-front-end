@@ -73,15 +73,19 @@ button:hover {
 button {
   background-color: var(--color-primary);
   color: white;
-  border-radius: 8px;
   border: none;
   padding: 12px 18px;
   font-weight: bold;
+  width: 125px;
 }
 
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+.buttons{
+display: flex;
+justify-content:space-between;
 }
 
 .card header {

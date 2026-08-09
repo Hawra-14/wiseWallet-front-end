@@ -19,12 +19,25 @@ const Add = (props) => {
       [event.target.name]: event.target.value,
     });
   };
-  const handleSubmit = () => {};
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await props.addTransaction(formData);
+      setFormData(initialState);
+      navigate("/transactions");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <main>
       <h1>Add Transaction</h1>
       <form onSubmit={handleSubmit}>
+        <div className="buttons">
+          <button>Income</button>
+          <button>Expense</button>
+        </div>
         <label>Name: </label>
         <input
           type="text"
@@ -33,7 +46,7 @@ const Add = (props) => {
           onChange={handleChange}
         />
         <label>Month: </label>
-        <select>
+        <select value={formData.month} onChange={handleChange}>
           <option value="">Select Month</option>
           <option value="January">January</option>
           <option value="February">February</option>
@@ -48,10 +61,9 @@ const Add = (props) => {
           <option value="November">November</option>
           <option value="December">December</option>
         </select>
-        <label htmlFor="income">Income <input type="checkbox" /></label>
         <br />
         <label htmlFor="expenseCat">Category:</label>
-        <select>
+        <select value={formData.expenseCat} onChange={handleChange}>
           <option value="">Select a category</option>
           <option value="food-and-dining">Food & Dining</option>
           <option value="housing">Housing</option>
@@ -77,8 +89,10 @@ const Add = (props) => {
           <option value="bonus">Bonus</option>
           <option value="other">Other</option>
         </select>
-        
-        <label htmlFor="amount">Amount</label>
+
+        <label htmlFor="amount" value={formData.amount} onChange={handleChange}>
+          Amount
+        </label>
         <input type="number" required />
       </form>
     </main>
