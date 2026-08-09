@@ -7,6 +7,7 @@ import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import TransactionList from "./pages/TransactionList"
+import Add from "./pages/Add"
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -28,6 +29,7 @@ const App = () => {
         <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
         <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
+        <Route path='/add-transaction' element={<Add />} />
       </Routes>
       </main>
     </div>

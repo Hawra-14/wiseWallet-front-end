@@ -9,7 +9,7 @@ const initialState = {
   amount: "",
 };
 
-const add = (props) => {
+const Add = (props) => {
   const [formData, setFormData] = useState(initialState);
   const navigate = useNavigate();
 
@@ -36,4 +36,4 @@ const add = (props) => {
     </main>
   );
 };
-export default add;
+export default Add
