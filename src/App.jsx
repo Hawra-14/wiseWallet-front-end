@@ -1,12 +1,16 @@
 import Nav from "./components/Nav"
 import './App.css'
+
 import { Routes, Route } from "react-router"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import * as transactionService from './services/transactions'
+
 import SignUpForm from "./pages/SignUpForm"
 import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import TransactionList from "./pages/TransactionList"
+
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -19,16 +23,34 @@ const getUserFromToken = () => {
 const App = () => {
 
   const [user, setUser] = useState(getUserFromToken())
-  
+  const [transactions, setTransactions] = useState([])
+
+  useEffect(() => {
+    const fetchAllTransactions = async () => {
+      const transactionsData = await transactionService.index()
+
+      setTransactions(transactionsData)
+    }
+    if (user) fetchAllTransactions()
+  }, [user])
+
   return (
     <div>
       <Nav user={user} setUser={setUser} />
       <main className="app-main">
-      <Routes>
-        <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
-        <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
-        <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
-      </Routes>
+        <Routes>
+          <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
+          {user ? (
+            <>
+              <Route path='/transactions' element={<TransactionList transactions={transactions}/>} />
+            </>
+          ) : (
+            <>
+              <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
+              <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
+            </>
+          )}
+        </Routes>
       </main>
     </div>
   )
