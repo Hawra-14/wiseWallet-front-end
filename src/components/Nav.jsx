@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-
+import add from "../pages/add"
 
 const Nav = (props) => {
 
@@ -17,7 +17,7 @@ const Nav = (props) => {
                         <Link to="/">Dashboard</Link>
                     </li>
                     <li>
-                        <Link to="/This-month">This Month</Link>
+                        <Link to="/Transactions">Transactions</Link>
                     </li>
                     <li>
                         <Link to="/Add-new">Add Transaction</Link>
