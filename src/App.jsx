@@ -10,6 +10,7 @@ import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import TransactionList from "./pages/TransactionList"
+import TransactionDetails from "./pages/TranscationDetails"
 
 
 const getUserFromToken = () => {
@@ -43,6 +44,7 @@ const App = () => {
           {user ? (
             <>
               <Route path='/transactions' element={<TransactionList transactions={transactions}/>} />
+              <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions}/>} />
             </>
           ) : (
             <>
