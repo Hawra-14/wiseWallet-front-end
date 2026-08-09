@@ -48,7 +48,7 @@ const App = () => {
                 path="/transactions"
                 element={<TransactionList transactions={transactions} />}
               />
-              <Route path="/add-transaction" element={<Add />} />
+              <Route path="/add-transaction" element={<Add setUser={setUser}/>} />
             </>
           ) : (
             <>

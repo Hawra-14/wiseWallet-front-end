@@ -20,7 +20,7 @@ const Nav = (props) => {
                         <Link to="/Transactions">Transactions</Link>
                     </li>
                     <li>
-                        <Link to="/Add-new">Add Transaction</Link>
+                        <Link to="/Add-transaction">Add Transaction</Link>
                     </li>
                     <li>
                         <Link to="/" onClick={handleSignOut}>Sign Out</Link>
