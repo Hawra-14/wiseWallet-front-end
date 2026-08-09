@@ -61,7 +61,6 @@ const Add = (props) => {
           <option value="November">November</option>
           <option value="December">December</option>
         </select>
-        <br />
         <label htmlFor="expenseCat">Category:</label>
         <select value={formData.expenseCat} onChange={handleChange}>
           <option value="">Select a category</option>
