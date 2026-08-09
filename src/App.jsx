@@ -48,6 +48,7 @@ const App = () => {
             <>
               <Route path='/transactions' element={<TransactionList transactions={transactions}/>} />
               <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions}/>} />
+              <Route path="Add-transaction" element={<Add />} />
             </>
           ) : (
             <>
