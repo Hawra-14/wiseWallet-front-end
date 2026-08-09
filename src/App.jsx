@@ -46,8 +46,9 @@ const App = () => {
           />
           {user ? (
             <>
-              <Route path='/transactions' element={<TransactionList transactions={transactions}/>} />
+              <Route path='/transactions' element={<TransactionList transactions={transactions} user={user}/>} />
               <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions}/>} />
+              <Route path='/add-transaction' element={<Add transactions={transactions}/>} />
             </>
           ) : (
             <>
