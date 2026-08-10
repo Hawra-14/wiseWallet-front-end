@@ -64,7 +64,7 @@ const Add = (props) => {
   }
 
   return (
-    <main>
+    <main className="container">
       <h1>{transactionId ? 'Edit Transaction' : 'Add Transaction'}</h1>
 
       <div className="choose-button">
