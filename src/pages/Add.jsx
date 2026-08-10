@@ -34,7 +34,7 @@ const Add = (props) => {
     <main>
       <h1>Add Transaction</h1>
       <form onSubmit={handleSubmit}>
-        <div className="buttons">
+        <div className="choose-button">
           <button>Income</button>
           <button>Expense</button>
         </div>
