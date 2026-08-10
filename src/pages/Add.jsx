@@ -117,6 +117,7 @@ const Add = (props) => {
       {/* EXPENSE FORM */}
       <form id="expense-form" className="expense-form disable" onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
+
         <input
           type="text"
           name="name"
