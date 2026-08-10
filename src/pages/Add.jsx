@@ -31,7 +31,7 @@ const Add = (props) => {
   };
 
   return (
-    <main>
+    <main className="container">
       <h1>Add Transaction</h1>
       <form onSubmit={handleSubmit}>
         <div className="choose-button">
@@ -93,6 +93,7 @@ const Add = (props) => {
           Amount
         </label>
         <input type="number" required />
+        <button type="submit">Submit</button>
       </form>
     </main>
   );
