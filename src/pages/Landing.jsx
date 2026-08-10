@@ -4,7 +4,7 @@ const Landing = () => {
             <h1>Welcome!</h1>
             <h3>Choose wisely and use wiseWallet</h3>
             <p>Track your expenses</p>
-
+<p>testing perpouses </p>
         </section>
     )
 }
