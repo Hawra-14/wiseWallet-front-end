@@ -35,6 +35,14 @@ const App = () => {
     if (user) fetchAllTransactions();
   }, [user]);
 
+
+  const handleUpdateTransaction = async (transactionId, formData) => {
+    console.log('transatransactionId: ',transactionId)
+    console.log('formData: ', formData)
+    navigate(`/transactions/${transatransactionId}`)
+  }
+
+
   return (
     <div>
       <Nav user={user} setUser={setUser} />
@@ -46,9 +54,10 @@ const App = () => {
           />
           {user ? (
             <>
-              <Route path='/transactions' element={<TransactionList transactions={transactions} user={user}/>} />
-              <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions}/>} />
-              <Route path='/add-transaction' element={<Add transactions={transactions}/>} />
+              <Route path='/transactions' element={<TransactionList transactions={transactions} user={user} />} />
+              <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions} />} />
+              <Route path='/add-transaction' element={<Add transactions={transactions} />} />
+              <Route path='/transactions/:transactionId/edit' element={<Add handleUpdateTransaction={handleUpdateTransaction} />} />
             </>
           ) : (
             <>
