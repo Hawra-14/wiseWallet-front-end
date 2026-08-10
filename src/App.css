@@ -83,7 +83,7 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-.buttons{
+.choose-button{
 display: flex;
 justify-content:space-between;
 }
