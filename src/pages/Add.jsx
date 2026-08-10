@@ -61,7 +61,7 @@ const Add = (props) => {
   }
 
   return (
-    <main>
+    <main className="container">
       <h1>{transactionId ? 'Edit Transaction' : 'Add Transaction'}</h1>
 
       <div className="buttons">
@@ -162,7 +162,7 @@ const Add = (props) => {
         </select>
 
         <label htmlFor="amount">Amount</label>
-        <input id="amount" type="number" value={formData.amount} onChange={handleChange} />
+        <input id="amount" type="number" value={formData.amount} onChange={handleChange} required />
 
         <button type="submit">Submit</button>
       </form>
