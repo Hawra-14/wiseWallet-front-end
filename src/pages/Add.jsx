@@ -45,13 +45,19 @@ const Add = (props) => {
   };
 
   const handleIncome = () => {
+    let expenseForm = document.getElementById("expense-form");
+    expenseForm.classList.add("disable");
+
     let incomeForm = document.getElementById("income-form");
-    incomeForm.classList.toggle("disable");
+    incomeForm.classList.remove("disable");
   }
 
   const handleExpense = () => {
+    let incomeForm = document.getElementById("income-form");
+    incomeForm.classList.add("disable");
+
     let expenseForm = document.getElementById("expense-form");
-    expenseForm.classList.toggle("disable");
+    expenseForm.classList.remove("disable");
   }
 
   return (
@@ -109,7 +115,7 @@ const Add = (props) => {
       </form>
 
       {/* EXPENSE FORM */}
-      <form id="expense-form" className="expense-form" onSubmit={handleSubmit}>
+      <form id="expense-form" className="expense-form disable" onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
