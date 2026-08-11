@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import * as transactionService from '../services/transactions'
 
 const initialState = {
-  isIncome: true,
+  isIncome: false,
   name: "",
   month: "",
   expenseCat: "other",
@@ -50,17 +50,23 @@ const Add = (props) => {
 
     let incomeForm = document.getElementById("income-form");
     incomeForm.classList.remove("disable");
-    setFormData({ ...formData, isIncome: true })
+    setFormData({
+      ...formData,
+      isIncome: true,
+    })
   }
-  
+
   const handleExpense = () => {
     let incomeForm = document.getElementById("income-form");
     incomeForm.classList.add("disable");
-    
+
     let expenseForm = document.getElementById("expense-form");
     expenseForm.classList.remove("disable");
 
-    setFormData({ ...formData, isIncome: false })
+    setFormData({
+      ...formData,
+      isIncome: false,
+    })
   }
 
   return (
@@ -73,7 +79,7 @@ const Add = (props) => {
       </div>
 
       {/* INCOME FORM */}
-      <form id="income-form" className="income-form" onSubmit={handleSubmit}>
+      <form id="income-form" className="income-form disable" onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input
           required
@@ -118,7 +124,7 @@ const Add = (props) => {
       </form>
 
       {/* EXPENSE FORM */}
-      <form id="expense-form" className="expense-form disable" onSubmit={handleSubmit}>
+      <form id="expense-form" className="expense-form" onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
 
         <input

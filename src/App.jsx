@@ -12,9 +12,10 @@ import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import TransactionList from "./pages/TransactionList";
 import TransactionDetails from "./pages/TranscationDetails"
-import Add from "./pages/Add";
-import Budget from "./pages/Budget";
+
 import Form from "./pages/Form";
+import Budget from "./pages/Budget";
+import UpdateForm from "./pages/UpdateForm";
 
 const getUserFromToken = () => {
   const token = localStorage.getItem("token");
@@ -46,8 +47,11 @@ const App = () => {
   }
 
   const handleUpdateTransaction = async (transactionId, formData) => {
-    console.log('transatransactionId: ', transactionId)
-    console.log('formData: ', formData)
+    const updateTransaction = await transactionService.update(transactionId, formData)
+    const updatedTransactionArr = transactions.map((transaction) => {
+      return transaction._id === transactionId ? updateTransaction : transaction
+    })
+    setTransactions(updatedTransactionArr)
     navigate(`/transactions/${transatransactionId}`)
   }
 
@@ -65,9 +69,10 @@ const App = () => {
             <>
               <Route path='/transactions' element={<TransactionList transactions={transactions} user={user} />} />
               <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions} />} />
-              <Route path='/add-transaction' element={<Add transactions={transactions} handleAddTransaction={handleAddTransaction} />} />
-              <Route path='/transactions/:transactionId/edit' element={<Add handleUpdateTransaction={handleUpdateTransaction} />} />
+              <Route path='/add-transaction' element={<Form transactions={transactions} handleAddTransaction={handleAddTransaction} />} />
+              <Route path='/transactions/:transactionId/edit' element={<UpdateForm transactions={transactions} handleUpdateTransaction={handleUpdateTransaction} />} />
               <Route path="/budget" element={<Budget user={user} />} />
+
             </>
           ) : (
             <>
