@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import TransactionList from "./pages/TransactionList";
 import TransactionDetails from "./pages/TranscationDetails"
 import Add from "./pages/Add";
+import Budget from "./pages/Budget";
 
 const getUserFromToken = () => {
   const token = localStorage.getItem("token");
@@ -58,6 +59,7 @@ const App = () => {
               <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions} />} />
               <Route path='/add-transaction' element={<Add transactions={transactions} />} />
               <Route path='/transactions/:transactionId/edit' element={<Add handleUpdateTransaction={handleUpdateTransaction} />} />
+              <Route path="/budget" element={<Budget user={user} />} />
             </>
           ) : (
             <>
