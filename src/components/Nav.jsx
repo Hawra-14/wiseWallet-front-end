@@ -22,7 +22,7 @@ const Nav = (props) => {
                         <Link to="/add-transaction">Add Transaction</Link>
                     </li>
                     <li>
-                        <Link to="/budget">Create a budget</Link>
+                        <Link to="/budgets/new">Create a budget</Link>
                     </li>
                     <li>
                         <Link to="/budgets">Budgets</Link>

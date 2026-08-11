@@ -1,20 +1,20 @@
 import Nav from "./components/Nav";
 import "./App.css";
 
-import { Routes, Route, useNavigate } from "react-router"
-import { useState, useEffect, use } from "react"
-import * as transactionService from './services/transactions'
-
+import { Routes, Route, useNavigate } from "react-router";
+import { useState, useEffect, use } from "react";
+import * as transactionService from "./services/transactions";
+import * as budgetService from "./services/budget";
 
 import SignUpForm from "./pages/SignUpForm";
 import SignInForm from "./pages/SignInForm";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import TransactionList from "./pages/TransactionList";
-import TransactionDetails from "./pages/TranscationDetails"
+import TransactionDetails from "./pages/TranscationDetails";
 
 import Form from "./pages/Form";
-import Budget from "./pages/Budget";
+import BudgetForm from "./pages/BudgetForm";
 import Budgets from "./pages/Budgets";
 import UpdateForm from "./pages/UpdateForm";
 
@@ -27,11 +27,10 @@ const getUserFromToken = () => {
 };
 
 const App = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [user, setUser] = useState(getUserFromToken());
   const [transactions, setTransactions] = useState([]);
-  const [budgets, setBudgets] = useState([])
+  const [budgets, setBudgets] = useState([]);
 
   useEffect(() => {
     const fetchAllTransactions = async () => {
@@ -42,31 +41,47 @@ const App = () => {
     if (user) fetchAllTransactions();
   }, [user]);
 
+  useEffect(() => {
+    const fetchAllBudget = async () => {
+      const budgetData = await budgetService.index();
+
+      setBudgets(budgetData);
+    };
+    if (user) fetchAllBudget();
+  }, [user]);
+
   const handleAddTransaction = async (formData) => {
-    const newTransaction = await transactionService.create(formData)
-    setTransactions([newTransaction, ...transactions])
-    navigate('/transactions')
-  }
+    const newTransaction = await transactionService.create(formData);
+    setTransactions([newTransaction, ...transactions]);
+    navigate("/transactions");
+  };
   const handleUpdateTransaction = async (transactionId, formData) => {
-    const updateTransaction = await transactionService.update(transactionId, formData)
+    const updateTransaction = await transactionService.update(
+      transactionId,
+      formData,
+    );
     const updatedTransactionArr = transactions.map((transaction) => {
-      return transaction._id === transactionId ? updateTransaction : transaction
-    })
-    setTransactions(updatedTransactionArr)
-    navigate(`/transactions/${transactionId}`)
-  }
+      return transaction._id === transactionId
+        ? updateTransaction
+        : transaction;
+    });
+    setTransactions(updatedTransactionArr);
+    navigate(`/transactions/${transactionId}`);
+  };
 
   const handleDeleteTransaction = async (transactionId) => {
-    const deletedTransaction = await transactionService.deleteTransaction(transactionId)
-    setTransactions(transactions.filter((transaction) => transaction._id !== transactionId))
-    navigate('/transactions')
-  }
-  const handleAddBudget = async (formData)=>{
-    const newBudget = await budgetService.create(formData)
-    setBudgets([newBudget, ...budgets])
-    navigate('/budgets')
-  }
-
+    const deletedTransaction =
+      await transactionService.deleteTransaction(transactionId);
+    setTransactions(
+      transactions.filter((transaction) => transaction._id !== transactionId),
+    );
+    navigate("/transactions");
+  };
+  const handleAddBudget = async (formData) => {
+    const newBudget = await budgetService.create(formData);
+    setBudgets([newBudget, ...budgets]);
+    navigate("/budgets");
+  };
 
   return (
     <div>
@@ -79,13 +94,55 @@ const App = () => {
           />
           {user ? (
             <>
-              <Route path='/transactions' element={<TransactionList transactions={transactions} user={user} />} />
-              <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions} user={user} handleDeleteTransaction={handleDeleteTransaction} />} />
-              <Route path='/add-transaction' element={<Form transactions={transactions} handleAddTransaction={handleAddTransaction} />} />
-              <Route path='/transactions/:transactionId/edit' element={<UpdateForm transactions={transactions} handleUpdateTransaction={handleUpdateTransaction} />} />
-              <Route path="/budget" element={<Budget user={user} />} />
-              <Route path="/budgets" element={<Budgets user={user} />} />
-
+              <Route
+                path="/transactions"
+                element={
+                  <TransactionList transactions={transactions} user={user} />
+                }
+              />
+              <Route
+                path="/transactions/:transactionId"
+                element={
+                  <TransactionDetails
+                    transactions={transactions}
+                    user={user}
+                    handleDeleteTransaction={handleDeleteTransaction}
+                  />
+                }
+              />
+              <Route
+                path="/add-transaction"
+                element={
+                  <Form
+                    transactions={transactions}
+                    handleAddTransaction={handleAddTransaction}
+                  />
+                }
+              />
+              <Route
+                path="/transactions/:transactionId/edit"
+                element={
+                  <UpdateForm
+                    transactions={transactions}
+                    handleUpdateTransaction={handleUpdateTransaction}
+                  />
+                }
+              />
+              <Route
+                path="/budgets/new"
+                element={
+                  <BudgetForm budgets={budgets} user={user} handleAddBudget={handleAddBudget} />
+                }
+              />
+              <Route
+                path="/budgets"
+                element={
+                  <Budgets
+                    user={user}
+                    budgets={budgets}
+                  />
+                }
+              />
             </>
           ) : (
             <>
