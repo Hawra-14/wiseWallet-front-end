@@ -12,7 +12,7 @@ const index = async () => {
 }
 
 const show = async (id) => {
-  const res = await fetch(`${BASE_URL}/${id}`,{
+  const res = await fetch(`${BASE_URL}/${id}`, {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
   })
   const data = await res.json()
@@ -56,9 +56,24 @@ const update = async (id, updatedTransaction) => {
   return data
 }
 
+const deleteTransaction = async (transactionId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${transactionId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export {
   index,
   show,
   create,
   update,
+  deleteTransaction,
 }

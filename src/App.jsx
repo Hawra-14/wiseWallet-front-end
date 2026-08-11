@@ -56,6 +56,11 @@ const App = () => {
     navigate(`/transactions/${transactionId}`)
   }
 
+  const handleDeleteTransaction = async (transactionId) => {
+    const deletedTransaction = await transactionService.deleteTransaction(transactionId)
+    setTransactions(transactions.filter((transaction) => transaction._id !== transactionId))
+    navigate('/transactions')
+  }
   const handleAddBudget = async (formData)=>{
     const newBudget = await budgetService.create(formData)
     setBudgets([newBudget, ...budgets])
@@ -75,7 +80,7 @@ const App = () => {
           {user ? (
             <>
               <Route path='/transactions' element={<TransactionList transactions={transactions} user={user} />} />
-              <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions} />} />
+              <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions} user={user} handleDeleteTransaction={handleDeleteTransaction} />} />
               <Route path='/add-transaction' element={<Form transactions={transactions} handleAddTransaction={handleAddTransaction} />} />
               <Route path='/transactions/:transactionId/edit' element={<UpdateForm transactions={transactions} handleUpdateTransaction={handleUpdateTransaction} />} />
               <Route path="/budget" element={<Budget user={user} />} />

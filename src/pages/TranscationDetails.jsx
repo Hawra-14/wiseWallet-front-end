@@ -19,9 +19,12 @@ const TransactionDetails = (props) => {
             )}
             <p>Month: {transaction.month}</p>
 
-            <div className="actions">
-                <button onClick={() => navigate(`/transactions/${transactionId}/edit`)}>Edit</button>
-            </div>
+            {transaction.userId._id === props.user._id && (
+                <div className="actions">
+                    <button onClick={() => navigate(`/transactions/${transactionId}/edit`)}>Edit</button>
+                    <button onClick={() => props.handleDeleteTransaction(transactionId)}>Delete</button>
+                </div>
+            )}
         </main>
     )
 }
