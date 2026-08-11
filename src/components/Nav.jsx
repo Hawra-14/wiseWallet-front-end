@@ -1,5 +1,4 @@
 import { Link } from "react-router"
-import add from "../pages/Add"
 
 const Nav = (props) => {
 
