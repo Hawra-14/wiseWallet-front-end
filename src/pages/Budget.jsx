@@ -6,8 +6,8 @@ const Budget = (props) => {
     name: "",
     amount: "",
     month: "",
-    description: '',
-    category: '',
+    description: "",
+    category: "",
   };
   const [formData, setFormData] = useState(initialState);
   const navigate = useNavigate();
@@ -32,18 +32,15 @@ const Budget = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (budgetId) {
-      await props.handleUpdateBudget(budgetId, formData);
-    } else {
-      await props.handleAddBudget(formData);
-    }
+    await props.handleAddBudget(formData);
+
     setFormData(initialState);
   };
 
   return (
     <main className="container">
       <h1>Create a budget</h1>
-      <form>
+      <form onChange={handleSubmit}>
         <label htmlFor="name">Name: </label>
         <input
           type="text"
@@ -54,8 +51,8 @@ const Budget = (props) => {
         />
         <label htmlFor="amount">Amount: </label>
         <input
-          type="text"
-          name="name"
+          type="number"
+          name="amount"
           value={formData.amount}
           onChange={handleChange}
           required
@@ -77,14 +74,20 @@ const Budget = (props) => {
           <option value="December">December</option>
         </select>
         <label htmlFor="description">Description: </label>
-        <input type="text" name="description" value={formData.description} />
+        <input
+          id="description"
+          type="text"
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+        />
         <label htmlFor="category">Category: </label>
         <select name="category" id="category">
-            <option value="">Select a Category</option>
-            <option value="travel">Travel</option>
-            <option value="renovation">House renovation</option>
-            <option value="study">Study</option>
-            <option value="others">Others</option>
+          <option value="">Select a Category</option>
+          <option value="travel">Travel</option>
+          <option value="renovation">House renovation</option>
+          <option value="study">Study</option>
+          <option value="others">Others</option>
         </select>
         <button type="submit">Create</button>
       </form>

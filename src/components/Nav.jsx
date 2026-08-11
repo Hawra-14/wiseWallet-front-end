@@ -25,6 +25,9 @@ const Nav = (props) => {
                         <Link to="/budget">Create a budget</Link>
                     </li>
                     <li>
+                        <Link to="/budgets">Budgets</Link>
+                    </li>
+                    <li>
                         <Link to="/" onClick={handleSignOut}>Sign Out</Link>
                     </li>
                 </ul>
