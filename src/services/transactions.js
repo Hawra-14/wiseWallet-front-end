@@ -11,6 +11,18 @@ const index = async () => {
   }
 }
 
+const show = async (id) => {
+  const res = await fetch(`${BASE_URL}/${id}`,{
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+  })
+  const data = await res.json()
+  if (!res.ok) {
+    throw new Error(`${res.status}: ${data.message}`)
+  }
+
+  return data
+}
+
 const create = async (transactionFormData) => {
   try {
     const res = await fetch(BASE_URL, {
@@ -27,7 +39,25 @@ const create = async (transactionFormData) => {
   }
 }
 
-export { 
+const update = async (id, updatedTransaction) => {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(updatedTransaction)
+  })
+  const data = await res.json()
+  if (!res.ok) {
+    throw new Error(`${res.status}: ${data.message}`)
+  }
+
+  return data
+}
+
+export {
   index,
+  show,
   create,
+  update,
 }
