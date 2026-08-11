@@ -2,7 +2,7 @@ import Nav from "./components/Nav";
 import "./App.css";
 
 import { Routes, Route, useNavigate } from "react-router"
-import { useState, useEffect } from "react"
+import { useState, useEffect, use } from "react"
 import * as transactionService from './services/transactions'
 
 
@@ -15,6 +15,7 @@ import TransactionDetails from "./pages/TranscationDetails"
 
 import Form from "./pages/Form";
 import Budget from "./pages/Budget";
+import Budgets from "./pages/Budgets";
 import UpdateForm from "./pages/UpdateForm";
 
 const getUserFromToken = () => {
@@ -30,6 +31,7 @@ const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(getUserFromToken());
   const [transactions, setTransactions] = useState([]);
+  const [budgets, setBudgets] = useState([])
 
   useEffect(() => {
     const fetchAllTransactions = async () => {
@@ -45,7 +47,6 @@ const App = () => {
     setTransactions([newTransaction, ...transactions])
     navigate('/transactions')
   }
-
   const handleUpdateTransaction = async (transactionId, formData) => {
     const updateTransaction = await transactionService.update(transactionId, formData)
     const updatedTransactionArr = transactions.map((transaction) => {
@@ -53,6 +54,12 @@ const App = () => {
     })
     setTransactions(updatedTransactionArr)
     navigate(`/transactions/${transactionId}`)
+  }
+
+  const handleAddBudget = async (formData)=>{
+    const newBudget = await budgetService.create(formData)
+    setBudgets([newBudget, ...budgets])
+    navigate('/budgets')
   }
 
 
@@ -72,6 +79,7 @@ const App = () => {
               <Route path='/add-transaction' element={<Form transactions={transactions} handleAddTransaction={handleAddTransaction} />} />
               <Route path='/transactions/:transactionId/edit' element={<UpdateForm transactions={transactions} handleUpdateTransaction={handleUpdateTransaction} />} />
               <Route path="/budget" element={<Budget user={user} />} />
+              <Route path="/budgets" element={<Budgets user={user} />} />
 
             </>
           ) : (

@@ -84,6 +84,7 @@ button {
   width: 180px;
   font-family: monospace;
   font-size: large;
+  margin-top: 15px;
 }
 
 button:disabled {
@@ -134,8 +135,11 @@ button:disabled {
 .container {
   border: 0.6px solid navy;
   background-color: aliceblue;
-  padding: 20px;
-  width: 70dvh;
+  padding-top: 3.6rem;
+  padding-bottom: 3.6rem;
+ padding-right: 5rem;
+ padding-left: 5rem;
+  min-width: 100dvh;
   border-radius: 4px;
 }
 
