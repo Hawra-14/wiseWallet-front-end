@@ -7,7 +7,6 @@ const UpdateForm = (props) => {
     const navigate = useNavigate()
 
     const [transactionToEdit, setTransactionToEdit] = useState({})
-
     
     const initialState = {
         name: transactionToEdit.name,
