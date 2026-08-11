@@ -12,12 +12,8 @@ import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import TransactionList from "./pages/TransactionList";
 import TransactionDetails from "./pages/TranscationDetails"
-<<<<<<< HEAD
-import Add from "./pages/Add";
-import Budget from "./pages/Budget";
-=======
 import Form from "./pages/Form";
->>>>>>> main
+import Budget from "./pages/Budget";
 
 const getUserFromToken = () => {
   const token = localStorage.getItem("token");
