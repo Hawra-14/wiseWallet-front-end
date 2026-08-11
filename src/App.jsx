@@ -1,7 +1,7 @@
 import Nav from "./components/Nav";
 import "./App.css";
 
-import { Routes, Route } from "react-router"
+import { Routes, Route, useNavigate } from "react-router"
 import { useState, useEffect } from "react"
 import * as transactionService from './services/transactions'
 
@@ -12,8 +12,12 @@ import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import TransactionList from "./pages/TransactionList";
 import TransactionDetails from "./pages/TranscationDetails"
+<<<<<<< HEAD
 import Add from "./pages/Add";
 import Budget from "./pages/Budget";
+=======
+import Form from "./pages/Form";
+>>>>>>> main
 
 const getUserFromToken = () => {
   const token = localStorage.getItem("token");
@@ -24,6 +28,8 @@ const getUserFromToken = () => {
 };
 
 const App = () => {
+
+  const navigate = useNavigate()
   const [user, setUser] = useState(getUserFromToken());
   const [transactions, setTransactions] = useState([]);
 
@@ -36,9 +42,14 @@ const App = () => {
     if (user) fetchAllTransactions();
   }, [user]);
 
+  const handleAddTransaction = async (formData) => {
+    const newTransaction = await transactionService.create(formData)
+    setTransactions([newTransaction, ...transactions])
+    navigate('/transactions')
+  }
 
   const handleUpdateTransaction = async (transactionId, formData) => {
-    console.log('transatransactionId: ',transactionId)
+    console.log('transatransactionId: ', transactionId)
     console.log('formData: ', formData)
     navigate(`/transactions/${transatransactionId}`)
   }
@@ -57,7 +68,7 @@ const App = () => {
             <>
               <Route path='/transactions' element={<TransactionList transactions={transactions} user={user} />} />
               <Route path='/transactions/:transactionId' element={<TransactionDetails transactions={transactions} />} />
-              <Route path='/add-transaction' element={<Add transactions={transactions} />} />
+              <Route path='/add-transaction' element={<Add transactions={transactions} handleAddTransaction={handleAddTransaction} />} />
               <Route path='/transactions/:transactionId/edit' element={<Add handleUpdateTransaction={handleUpdateTransaction} />} />
               <Route path="/budget" element={<Budget user={user} />} />
             </>
