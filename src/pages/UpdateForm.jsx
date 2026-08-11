@@ -34,7 +34,6 @@ const UpdateForm = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         await props.handleUpdateTransaction(transactionId, formData)
-        navigate('/transaction')
     }
 
     if (!formData) return <p>Loading...</p>
