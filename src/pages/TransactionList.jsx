@@ -5,14 +5,20 @@ const TransactionList = (props) => {
     return (
         <main>
             <h1>All Transactions</h1>
+            <div>
+                <label for="site-search">Search</label>
+                <input type="search" id="site-search" name="q" />
+
+                <button>Search</button>
+            </div>
             {props.transactions.map((transaction) => (
                 transaction.userId._id === props.user._id ? (
-                <Link to={`/transactions/${transaction._id}`}>
-                    <div className={transaction.isIncome ? ("income-card") : ("expense-card")}>
-                        <p>Transaction name: {transaction.name}</p>
-                        <p>Transaction amount: {transaction.amount} BD</p>
-                    </div>
-                </Link>
+                    <Link to={`/transactions/${transaction._id}`}>
+                        <div className={transaction.isIncome ? ("income-card") : ("expense-card")}>
+                            <p>Transaction name: {transaction.name}</p>
+                            <p>Transaction amount: {transaction.amount} BD</p>
+                        </div>
+                    </Link>
                 ) : (
                     false
                 )
