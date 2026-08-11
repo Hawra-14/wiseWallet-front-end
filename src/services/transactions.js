@@ -43,6 +43,7 @@ const update = async (id, updatedTransaction) => {
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: 'PUT',
     headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(updatedTransaction)

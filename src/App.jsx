@@ -53,7 +53,7 @@ const App = () => {
       return transaction._id === transactionId ? updateTransaction : transaction
     })
     setTransactions(updatedTransactionArr)
-    navigate(`/transactions/${transatransactionId}`)
+    navigate(`/transactions/${transactionId}`)
   }
 
   const handleAddBudget = async (formData)=>{
