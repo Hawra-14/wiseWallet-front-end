@@ -31,14 +31,31 @@ const App = () => {
   const [user, setUser] = useState(getUserFromToken());
   const [transactions, setTransactions] = useState([]);
   const [budgets, setBudgets] = useState([]);
+  const [balance, setBalance] = useState(0)
 
   useEffect(() => {
     const fetchAllTransactions = async () => {
       const transactionsData = await transactionService.index();
 
+      let total = 0
+      transactionsData.map((transaction) => {
+        if (transaction.userId._id === user._id) {
+          if (transaction.isIncome === true) {
+            total += transaction.amount
+          } else {
+            total -= transaction.amount
+          }
+        } else {
+          <p>No Transaction</p>
+        }
+      })
+      setBalance(total)
+      console.log(balance, "balance");
+
       setTransactions(transactionsData);
     };
     if (user) fetchAllTransactions();
+
   }, [user]);
 
   useEffect(() => {
@@ -53,6 +70,13 @@ const App = () => {
   const handleAddTransaction = async (formData) => {
     const newTransaction = await transactionService.create(formData);
     setTransactions([newTransaction, ...transactions]);
+    let total = balance
+    if (formData.isIncome === true) {
+      total += formData.amount
+    } else {
+      total -= formData.amount
+    }
+    setBalance(total)
     navigate("/transactions");
   };
   const handleUpdateTransaction = async (transactionId, formData) => {
@@ -90,7 +114,7 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={user ? <Dashboard user={user} /> : <Landing />}
+            element={user ? <Dashboard user={user} balance={balance} /> : <Landing />}
           />
           {user ? (
             <>
