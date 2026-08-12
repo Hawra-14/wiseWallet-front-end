@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { useState } from "react";
 import * as budgetService from "../services/budget";
-import { text } from "express";
+// import { text } from "express";
 
 const BudgetDetails = (props) => {
   const { budgetId } = useParams();
@@ -24,4 +24,5 @@ const BudgetDetails = (props) => {
     </main>
   );
 };
+
 export default BudgetDetails;
