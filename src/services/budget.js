@@ -38,8 +38,41 @@ const create = async (budgetFormData) => {
   }
 }
 
+const update = async (id, updatedBudget) => {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(updatedBudget)
+  })
+  const data = await res.json()
+  if (!res.ok) {
+    throw new Error(`${res.status}: ${data.message}`)
+  }
+
+  return data
+}
+
+const deleteBudget = async (budgetId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${budgetId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export {
     index,
     show,
-    create
+    create,
+    update,
+    deleteBudget,
 }

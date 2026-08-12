@@ -12,7 +12,8 @@ const BudgetDetails = (props) => {
     return budget._id === budgetId;
   });
   console.log(budget);
-
+  
+  if (!budget) return <p>Loading...</p>
   return (
     <main>
       <h1>Budget Details</h1>
@@ -22,13 +23,13 @@ const BudgetDetails = (props) => {
           <strong>Amount:</strong> {budget.amount}
         </p>
         <p>
-          <strong>Month:</strong> {budget.month}{" "}
+          <strong>Month:</strong> {budget.month}
         </p>
         <p>
-          <strong>Description:</strong> {budget.description}{" "}
+          <strong>Description:</strong> {budget.description}
         </p>
         <p>
-          <strong>Category:</strong> {budget.category}{" "}
+          <strong>Category:</strong> {budget.category}
         </p>
       </div>
       {budget.userId._id === props.user._id && (
@@ -40,7 +41,7 @@ const BudgetDetails = (props) => {
             Delete
           </button>
         </div>
-      )}{" "}
+      )}
     </main>
   );
 };
