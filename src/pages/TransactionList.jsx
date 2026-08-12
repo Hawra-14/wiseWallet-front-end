@@ -5,9 +5,17 @@ const TransactionList = (props) => {
     const [search, setSearch] = useState('')
     const [filter, setFilter] = useState('all')
 
-    const filteredTransactions = props.transactions.filter((transaction) =>
-        transaction.name.toLowerCase().includes(search.toLowerCase())
-    )
+    const isThisMonth = (dateString) => {
+        const date = new Date(dateString)
+        const now = new Date()
+        return date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear()
+    }
+
+    const filteredTransactions = props.transactions.filter((transaction) => {
+        const matchesSearch = transaction.name.toLowerCase().includes(search.toLowerCase())
+        const matchesMonth = filter === 'all' ? true : isThisMonth(transaction.date)
+        return matchesSearch && matchesMonth
+    })
 
     return (
         <main>
@@ -18,6 +26,10 @@ const TransactionList = (props) => {
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
             />
+            <div>
+                <button onClick={() => setFilter('all')}>All</button>
+                <button onClick={() => setFilter('thisMonth')}>This Month</button>
+            </div>
             <div>
                 <h3>{props.balance ? `Your Balance is ${props.balance} BD` : `Loading..`}</h3>
             </div>
