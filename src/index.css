@@ -25,7 +25,7 @@
 body {
   min-height: 100vh;
   margin: 0;
-  background-image: url(assets/download\ \(4\).jpg);
+  background-image: url(assets/background_transparent.png);
   color: var(--color-text);
 }
 

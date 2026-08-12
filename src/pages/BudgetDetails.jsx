@@ -18,6 +18,7 @@ const BudgetDetails = (props) => {
     <main>
       <div className="budget-details">
         <h1>Budget Details</h1>
+        
         <p>
           <strong>Name:</strong> {budget.name}
         </p>

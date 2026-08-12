@@ -11,14 +11,14 @@ const TransactionDetails = (props) => {
     return (
         <main>
             <div className="transaction-details">
-            <h1>Transaction: {transaction.name}</h1>
+            <h1>{transaction.name}</h1>
             <p><strong>Amount: </strong>{transaction.amount} BD</p>
             {transaction.isIncome ? (
                 <p><strong>Income Category:</strong> {transaction.incomeCategory}</p>
             ) : (
-                <p><strong>Expense Category:</strong>{transaction.expenseCategory}</p>
+                <p><strong>Expense Category: </strong>{transaction.expenseCategory}</p>
             )}
-            <p>Date: {new Date(transaction.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            <p><strong>Date: </strong>{new Date(transaction.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
 
             {transaction.userId._id === props.user._id && (
                 <div className="actions">

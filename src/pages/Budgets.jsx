@@ -10,8 +10,7 @@ const Budgets = (props) => {
           budget.userId._id == props.user._id ? (
             <Link to={`/budgets/${budget._id}`}>
               <div className="budget-container">
-                <p>Name: {budget.name}</p>
-                <p>Amount: {budget.amount} BD</p>
+                <p className="all-budgets"><strong>{budget.name}</strong></p>
               </div>
             </Link>
           ) : (

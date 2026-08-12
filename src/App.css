@@ -300,3 +300,8 @@ h2 {
 .searchbox input::placeholder {
   color: #999;
 }
+
+.all-budgets {
+  font-size: larger;
+  text-align: center;
+}
