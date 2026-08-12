@@ -10,14 +10,15 @@ const TransactionDetails = (props) => {
 
     return (
         <main>
+            <div className="transaction-details">
             <h1>Transaction: {transaction.name}</h1>
-            <p>Amount: {transaction.amount} BD</p>
+            <p><strong>Amount: </strong>{transaction.amount} BD</p>
             {transaction.isIncome ? (
-                <p>Income Category: {transaction.incomeCategory}</p>
+                <p><strong>Income Category:</strong> {transaction.incomeCategory}</p>
             ) : (
-                <p>Expense Category: {transaction.expenseCategory}</p>
+                <p><strong>Expense Category:</strong>{transaction.expenseCategory}</p>
             )}
-            <p>Month: {transaction.month}</p>
+            <p><strong>Month:</strong> {transaction.month}</p>
 
             {transaction.userId._id === props.user._id && (
                 <div className="actions">
@@ -25,6 +26,7 @@ const TransactionDetails = (props) => {
                     <button onClick={() => props.handleDeleteTransaction(transactionId)}>Delete</button>
                 </div>
             )}
+            </div>
         </main>
     )
 }

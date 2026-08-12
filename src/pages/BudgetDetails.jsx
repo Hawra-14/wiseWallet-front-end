@@ -12,15 +12,17 @@ const BudgetDetails = (props) => {
     return budget._id === budgetId;
   });
   console.log(budget);
-  
-  if (!budget) return <p>Loading...</p>
+
+  if (!budget) return <p>Loading...</p>;
   return (
     <main>
       <div className="budget-details">
-      <h1>Budget Details</h1>
-        <p><strong>Name:</strong> {budget.name}</p>
+        <h1>Budget Details</h1>
         <p>
-          <strong>Amount:</strong> {budget.amount}
+          <strong>Name:</strong> {budget.name}
+        </p>
+        <p>
+          <strong>Amount:</strong> {budget.amount} BD
         </p>
         <p>
           <strong>Month:</strong> {budget.month}
@@ -31,16 +33,16 @@ const BudgetDetails = (props) => {
         <p>
           <strong>Category:</strong> {budget.category}
         </p>
-      {budget.userId._id === props.user._id && (
-        <div className="actions">
-          <button onClick={() => navigate(`/budgets/${budgetId}/edit`)}>
-            Edit
-          </button>
-          <button onClick={() => props.handleDeleteBudget(budgetId)}>
-            Delete
-          </button>
-        </div>
-      )}
+        {budget.userId._id === props.user._id && (
+          <div className="actions">
+            <button onClick={() => navigate(`/budgets/${budgetId}/edit`)}>
+              Edit
+            </button>
+            <button onClick={() => props.handleDeleteBudget(budgetId)}>
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );
