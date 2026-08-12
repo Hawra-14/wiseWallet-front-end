@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
+import * as budgetService from "../services/budget";
 
+const initialState = {
+  name: "",
+  amount: "",
+  month: "",
+  description: "",
+  category: "",
+};
 const Budget = (props) => {
-  const initialState = {
-    name: "",
-    amount: "",
-    month: "",
-    description: "",
-    category: "",
-  };
   const [formData, setFormData] = useState(initialState);
   const navigate = useNavigate();
   const { budgetId } = useParams();
@@ -33,14 +34,13 @@ const Budget = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await props.handleAddBudget(formData);
-
     setFormData(initialState);
   };
 
   return (
     <main className="container">
       <h1>Create a budget</h1>
-      <form onChange={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name: </label>
         <input
           type="text"
@@ -58,7 +58,7 @@ const Budget = (props) => {
           required
         />
         <label htmlFor="month">Month: </label>
-        <select name="month" id="month" required>
+        <select name="month" id="month" required  value={formData.month} onChange={handleChange}>
           <option value="">Select a month </option>
           <option value="January">January</option>
           <option value="February">February</option>
@@ -82,10 +82,10 @@ const Budget = (props) => {
           onChange={handleChange}
         />
         <label htmlFor="category">Category: </label>
-        <select name="category" id="category">
+        <select name="category" id="category" value={formData.category} onChange={handleChange}>
           <option value="">Select a Category</option>
           <option value="travel">Travel</option>
-          <option value="renovation">House renovation</option>
+          <option value="house renovation">House renovation</option>
           <option value="study">Study</option>
           <option value="others">Others</option>
         </select>
