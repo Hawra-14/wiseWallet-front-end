@@ -1,41 +1,30 @@
+import { useState } from "react"
 import { Link } from "react-router"
 
 const TransactionList = (props) => {
-    //search the subscriber in the list
-    function SearchBar() {
-        const { subscriber, setsubscriber } = useContext(Context)
+    const [search, setSearch] = useState('')
+    const [filter, setFilter] = useState('all')
 
-        const handleSearch = (e) => {
-            e.preventDefault()
-            const text = e.target.value;
-
-            const filteredUser = subscriber.filter((user) => {
-                if (user.name.includes(text)) {
-                    return user.name
-                }
-            })
-            setsubscriber(filteredUser)
-        }
-        return (
-            <div className='searchBar'><TextField
-                id="input1"
-                label="Search User Name"
-                onChange={(e) => handleSearch(e)}
-            />
-            </div>
-        )
-    }
+    const filteredTransactions = props.transactions.filter((transaction) =>
+        transaction.name.toLowerCase().includes(search.toLowerCase())
+    )
 
     return (
         <main>
             <h1>All Transactions</h1>
+            <input
+                type="text"
+                placeholder="Search transactions..."
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+            />
             <div>
-                <h3>{props.balance ? `Your Balance is ${props.balance} BD`: `Loading..`}</h3>
+                <h3>{props.balance ? `Your Balance is ${props.balance} BD` : `Loading..`}</h3>
             </div>
             <div className="transactions">
-                {props.transactions.map((transaction) => (
+                {filteredTransactions.map((transaction) => (
                     transaction.userId._id === props.user._id ? (
-                        <Link to={`/transactions/${transaction._id}`}>
+                        <Link to={`/transactions/${transaction._id}`} key={transaction._id}>
                             <div className={transaction.isIncome ? ("income-card") : ("expense-card")}>
                                 <p><strong>Name: {transaction.name}</strong></p>
                                 <p><strong>Amount: {transaction.amount} BD</strong></p>
