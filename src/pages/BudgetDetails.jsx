@@ -1,10 +1,12 @@
 import { useParams } from "react-router";
 import { useState } from "react";
 import * as budgetService from "../services/budget";
+import { useNavigate } from "react-router";
 // import { text } from "express";
 
 const BudgetDetails = (props) => {
   const { budgetId } = useParams();
+  const navigate = useNavigate();
 
   const budget = props.budgets.find((budget) => {
     return budget._id === budgetId;
@@ -13,14 +15,32 @@ const BudgetDetails = (props) => {
 
   return (
     <main>
-        <h1>Budget Details</h1>
+      <h1>Budget Details</h1>
       <div className="budget-details">
-        <h3>{budget.name}</h3>
-        <p><strong>Amount:</strong> {budget.amount}</p>
-        <p><strong>Month:</strong> {budget.month} </p>
-        <p><strong>Description:</strong> {budget.description} </p>
-        <p><strong>Category:</strong> {budget.category} </p>
+        <h2>{budget.name}</h2>
+        <p>
+          <strong>Amount:</strong> {budget.amount}
+        </p>
+        <p>
+          <strong>Month:</strong> {budget.month}{" "}
+        </p>
+        <p>
+          <strong>Description:</strong> {budget.description}{" "}
+        </p>
+        <p>
+          <strong>Category:</strong> {budget.category}{" "}
+        </p>
       </div>
+      {budget.userId._id === props.user._id && (
+        <div className="actions">
+          <button onClick={() => navigate(`/budgets/${budgetId}/edit`)}>
+            Edit
+          </button>
+          <button onClick={() => props.handleDeleteBudget(budgetId)}>
+            Delete
+          </button>
+        </div>
+      )}{" "}
     </main>
   );
 };
