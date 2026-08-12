@@ -6,7 +6,7 @@ import * as transactionService from '../services/transactions'
 const initialState = {
   isIncome: false,
   name: "",
-  month: "",
+  date: "",
   expenseCategory: "other",
   incomeCategory: "other",
   amount: "",
@@ -37,7 +37,7 @@ const Add = (props) => {
     });
   };
   const handleSubmit = async (event) => {
-    event.preventDefault();    
+    event.preventDefault();
     await props.handleAddTransaction(formData);
     // await props.handleBalance()
 
@@ -87,7 +87,7 @@ const Add = (props) => {
 
       {/* INCOME FORM */}
       <form id="income-form" className="income-form disable" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">Name</label>
         <input
           required
           type="text"
@@ -97,24 +97,16 @@ const Add = (props) => {
           onChange={handleChange}
         />
 
-        <label htmlFor="month">Month: </label>
-        <select required id="month" name="month" value={formData.month} onChange={handleChange}>
-          <option value="">Select Month</option>
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          <option value="April">April</option>
-          <option value="May">May</option>
-          <option value="June">June</option>
-          <option value="July">July</option>
-          <option value="August">August</option>
-          <option value="September">September</option>
-          <option value="October">October</option>
-          <option value="November">November</option>
-          <option value="December">December</option>
-        </select>
+        <label htmlFor="date">Date</label>
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          id="date"
+          onChange={handleChange}
+        />
 
-        <label htmlFor="incomeCategory">Income Category:</label>
+        <label htmlFor="incomeCategory">Income Category</label>
         <select id="incomeCategory" name="incomeCategory" value={formData.incomeCategory} onChange={handleChange}>
           <option value="salary">Salary</option>
           <option value="gift">Gift</option>
@@ -132,8 +124,7 @@ const Add = (props) => {
 
       {/* EXPENSE FORM */}
       <form id="expense-form" className="expense-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-
+        <label htmlFor="name">Name</label>
         <input
           required
           type="text"
@@ -143,24 +134,16 @@ const Add = (props) => {
           onChange={handleChange}
         />
 
-        <label htmlFor="month">Month: </label>
-        <select required id="month" name="month" value={formData.month} onChange={handleChange}>
-          <option value="">Select Month</option>
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          <option value="April">April</option>
-          <option value="May">May</option>
-          <option value="June">June</option>
-          <option value="July">July</option>
-          <option value="August">August</option>
-          <option value="September">September</option>
-          <option value="October">October</option>
-          <option value="November">November</option>
-          <option value="December">December</option>
-        </select>
+        <label htmlFor="date">Date</label>
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          id="date"
+          onChange={handleChange}
+        />
 
-        <label htmlFor="expenseCategory">Expense Category:</label>
+        <label htmlFor="expenseCategory">Expense Category</label>
         <select id="expenseCategory" name="expenseCategory" value={formData.expenseCategory} onChange={handleChange}>
           <option value="food and dining">Food & Dining</option>
           <option value="housing">Housing</option>
