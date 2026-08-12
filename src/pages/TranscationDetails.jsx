@@ -18,7 +18,7 @@ const TransactionDetails = (props) => {
             ) : (
                 <p><strong>Expense Category:</strong>{transaction.expenseCategory}</p>
             )}
-            <p><strong>Month:</strong> {transaction.month}</p>
+            <p>Date: {new Date(transaction.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
 
             {transaction.userId._id === props.user._id && (
                 <div className="actions">

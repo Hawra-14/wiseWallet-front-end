@@ -7,16 +7,16 @@ const UpdateForm = (props) => {
     const navigate = useNavigate()
 
     const [transactionToEdit, setTransactionToEdit] = useState({})
-    
+
     const initialState = {
         name: transactionToEdit.name,
         amount: transactionToEdit.amount,
         expenseCategory: transactionToEdit.expenseCategory,
         incomeCategory: transactionToEdit.incomeCategory,
-        month: transactionToEdit.month,
+        date: transactionToEdit.date,
         isIncome: transactionToEdit.isIncome,
     }
-    
+
     const [formData, setFormData] = useState(initialState)
 
     useEffect(() => {
@@ -55,22 +55,14 @@ const UpdateForm = (props) => {
                         onChange={handleChange}
                     />
 
-                    <label htmlFor="month">Month: </label>
-                    <select required id="month" name="month" value={formData.month} onChange={handleChange}>
-                        <option value="">Select Month</option>
-                        <option value="January">January</option>
-                        <option value="February">February</option>
-                        <option value="March">March</option>
-                        <option value="April">April</option>
-                        <option value="May">May</option>
-                        <option value="June">June</option>
-                        <option value="July">July</option>
-                        <option value="August">August</option>
-                        <option value="September">September</option>
-                        <option value="October">October</option>
-                        <option value="November">November</option>
-                        <option value="December">December</option>
-                    </select>
+                    <label htmlFor="date">Date</label>
+                    <input
+                        type="date"
+                        name="date"
+                        value={formData.date}
+                        id="date"
+                        onChange={handleChange}
+                    />
 
                     <label htmlFor="incomeCategory">Income Category:</label>
                     <select id="incomeCategory" name="incomeCategory" value={formData.incomeCategory} onChange={handleChange}>
@@ -101,22 +93,14 @@ const UpdateForm = (props) => {
                         onChange={handleChange}
                     />
 
-                    <label htmlFor="month">Month: </label>
-                    <select required id="month" name="month" value={formData.month} onChange={handleChange}>
-                        <option value="">Select Month</option>
-                        <option value="January">January</option>
-                        <option value="February">February</option>
-                        <option value="March">March</option>
-                        <option value="April">April</option>
-                        <option value="May">May</option>
-                        <option value="June">June</option>
-                        <option value="July">July</option>
-                        <option value="August">August</option>
-                        <option value="September">September</option>
-                        <option value="October">October</option>
-                        <option value="November">November</option>
-                        <option value="December">December</option>
-                    </select>
+                    <label htmlFor="date">Date</label>
+                    <input
+                        type="date"
+                        name="date"
+                        value={formData.date}
+                        id="date"
+                        onChange={handleChange}
+                    />
 
                     <label htmlFor="expenseCategory">Expense Category:</label>
                     <select id="expenseCategory" name="expenseCategory" value={formData.expenseCategory} onChange={handleChange}>
