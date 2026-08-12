@@ -20,7 +20,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: var(--morning-sky);
-  padding: 2px 10px;
+  padding: 0.5rem 2rem;
 }
 
 .nav-brand {
@@ -32,12 +32,37 @@ nav {
 
 nav ul {
   display: flex;
-  gap: 16px;
+  gap: 3rem;
   list-style: none;
+  font-weight: 600;
 }
 
 nav a:hover {
   color: var(--color-primary);
+}
+
+.sign-out-btn {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background-color: #f4f6f8;
+  font-weight: 300;
+  font-size: small;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: baseline;
+}
+
+.logo img {
+  height: 2rem;
+  width: auto;
+}
+
+.logo h3 {
+  margin: 4px 0 0;
 }
 
 h1 {
@@ -76,7 +101,7 @@ form input:focus {
 
 .actions button {
   flex: 1;
-  }
+}
 
 button {
   background-color: var(--golden-dune);
@@ -117,7 +142,7 @@ button:disabled {
 
 .income-card {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 50rem;
   padding: 1.5rem;
   background-color: var(--ocean-mist);
@@ -126,15 +151,25 @@ button:disabled {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
+.income-card img {
+  width: 30px;
+  height: 30px;
+}
+
 .expense-card {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 50rem;
   padding: 1.5rem;
   background-color: var(--golden-dune);
   border: 0.7px solid black;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.expense-card img {
+  width: 40px;
+  height: 40px;
 }
 
 .container {
@@ -162,7 +197,8 @@ button:disabled {
   gap: 20px;
 }
 
-.budget-details , .transaction-details{
+.budget-details,
+.transaction-details {
   border: 0.6px solid navy;
   background-color: rgb(250, 245, 240);
   padding: 3rem;
@@ -177,6 +213,7 @@ p {
   margin: 0;
   margin-top: 10px;
 }
+
 h2 {
   margin-bottom: 20px;
   text-align: center;
@@ -192,10 +229,14 @@ h2 {
 
 .balance-container {
   border: 0.6px solid navy;
-  background-color: aliceblue;
-  padding: 2rem;
+  background-color: var(--ocean-mist);
+  padding: 2rem 5rem;
   min-width: 100dvh;
   border-radius: 4px;
+}
+
+.balance-container h2 {
+  margin: 0;
 }
 
 .transactions {
@@ -203,8 +244,64 @@ h2 {
   flex-direction: column;
   gap: 1rem;
 }
-.all-budgets{
+
+.balance-filter {
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 1rem 2rem;
+}
+
+.balance-filter h3 {
+  margin: 0;
+  align-self: center;
+}
+
+.filters {
+  display: flex;
+  gap: 5px;
+}
+
+.filters button {
+  margin: 0;
+  width: 124px;
+  border-radius: 8px;
+  background-color: #afc3e3;
+}
+
+.filters button.active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.filters button.inactive {
+  opacity: 0.7;
+}
+
+.searchbox {
+  display: flex;
+  align-items: center;
+  width: 30rem;
+}
+
+.searchbox input {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.searchbox input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.searchbox input::placeholder {
+  color: #999;
+}
+
+.all-budgets {
   font-size: larger;
   text-align: center;
 }
-
