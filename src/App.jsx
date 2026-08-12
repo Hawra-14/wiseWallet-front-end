@@ -52,8 +52,6 @@ const App = () => {
         }
       });
       setBalance(total);
-      console.log(balance, "balance");
-
       setTransactions(transactionsData);
     };
     if (user) fetchAllTransactions();
@@ -106,6 +104,7 @@ const App = () => {
   const handleAddBudget = async (formData) => {
     const newBudget = await budgetService.create(formData);
     setBudgets([newBudget, ...budgets]);
+    setBalance((prevBalance) => prevBalance - Number(newBudget.amount));
     navigate("/budgets");
   };
 

@@ -20,18 +20,17 @@ const TransactionList = (props) => {
     })
 
     return (
-        <main>
+        <main style={{maxWidth:'800px'}}>
             <h1>All Transactions</h1>
             <div className="balance-filter">
                 <div class="searchbox">
                     <input
                         type="text"
-                        placeholder="Search transactions..."
+                        placeholder="Search transactions by name..."
                         value={search}
                         onChange={(event) => setSearch(event.target.value)}
                     />
                 </div>
-                {/* <h3>{props.balance ? `Your Balance is ${props.balance} BD` : `Loading..`}</h3> */}
                 <div className="filters">
                     <button className={filter === 'all' ? 'active' : 'inactive'} onClick={() => setFilter('all')}>All</button>
                     <button className={filter === 'thisMonth' ? 'active' : 'inactive'} onClick={() => setFilter('thisMonth')}>This Month</button>

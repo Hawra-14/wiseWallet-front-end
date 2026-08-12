@@ -123,6 +123,7 @@ button:disabled {
 .choose-button {
   display: flex;
   justify-content: space-between;
+  margin: 1.5rem;
 }
 
 .card header {
@@ -138,6 +139,22 @@ button:disabled {
   border: 1px solid var(--color-border);
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.landing-card {
+  align-content: center;
+  width: 80%;
+  justify-items: center;
+  padding: 4rem 32px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.landing-card img {
+  width: 4rem;
+  margin-bottom: 1rem;
 }
 
 .income-card {
@@ -249,6 +266,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   margin: 3rem 1rem 2rem;
+  min-width: 800px;
 }
 
 .balance-filter h3 {
@@ -263,7 +281,7 @@ h2 {
 
 .filters button {
   margin: 0;
-  width: 124px;
+  width: 128px;
   border-radius: 8px;
   background-color: #afc3e3;
 }
@@ -271,10 +289,11 @@ h2 {
 .filters button.active {
   opacity: 1;
   font-weight: 600;
+  border: 1.5px solid #315795;
 }
 
 .filters button.inactive {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .searchbox {
@@ -293,7 +312,7 @@ h2 {
 }
 
 .searchbox input:focus {
-  border-color: #4f46e5;
+  border-color: #315795;
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
 
@@ -304,4 +323,6 @@ h2 {
 .all-budgets {
   font-size: larger;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }

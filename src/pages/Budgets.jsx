@@ -4,7 +4,6 @@ const Budgets = (props) => {
   return (
     <main>
       <h1>All Budgets</h1>
-      {console.log(props.budgets)}
       <div className="budget-dash">
         {props.budgets.map((budget) =>
           budget.userId._id == props.user._id ? (

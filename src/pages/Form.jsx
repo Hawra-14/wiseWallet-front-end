@@ -29,8 +29,6 @@ const Add = (props) => {
   }, [transactionId])
 
   const handleChange = (event) => {
-    console.log(event.target.value);
-
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
@@ -39,8 +37,6 @@ const Add = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await props.handleAddTransaction(formData);
-    // await props.handleBalance()
-
     setFormData(initialState);
   };
 
