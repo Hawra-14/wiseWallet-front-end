@@ -71,11 +71,11 @@ const App = () => {
   const handleAddTransaction = async (formData) => {
     const newTransaction = await transactionService.create(formData);
     setTransactions([newTransaction, ...transactions]);
-    let total = balance;
+    let total = Number(balance);
     if (formData.isIncome === true) {
-      total += formData.amount;
+      total += Number(formData.amount);
     } else {
-      total -= formData.amount;
+      total -= Number(formData.amount);
     }
     setBalance(total);
     navigate("/transactions");

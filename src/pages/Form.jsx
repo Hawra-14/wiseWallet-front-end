@@ -47,9 +47,13 @@ const Add = (props) => {
   const handleIncome = () => {
     let expenseForm = document.getElementById("expense-form");
     expenseForm.classList.add("disable");
+    let expenseBtn = document.getElementById('expense-btn')
+    expenseBtn.classList.add('transparent-btn')
 
     let incomeForm = document.getElementById("income-form");
     incomeForm.classList.remove("disable");
+    let incomeBtn = document.getElementById('income-btn')
+    incomeBtn.classList.remove('transparent-btn')
     setFormData({
       ...formData,
       isIncome: true,
@@ -59,10 +63,13 @@ const Add = (props) => {
   const handleExpense = () => {
     let incomeForm = document.getElementById("income-form");
     incomeForm.classList.add("disable");
+    let incomeBtn = document.getElementById('income-btn')
+    incomeBtn.classList.add('transparent-btn')
 
     let expenseForm = document.getElementById("expense-form");
     expenseForm.classList.remove("disable");
-
+    let expenseBtn = document.getElementById('expense-btn')
+    expenseBtn.classList.remove('transparent-btn')
     setFormData({
       ...formData,
       isIncome: false,
@@ -74,8 +81,8 @@ const Add = (props) => {
       <h1>Add Transaction</h1>
 
       <div className="choose-button">
-        <button onClick={handleIncome}>Income</button>
-        <button onClick={handleExpense}>Expense</button>
+        <button id="expense-btn" onClick={handleExpense}>Expense</button>
+        <button id="income-btn" className="transparent-btn" onClick={handleIncome}>Income</button>
       </div>
 
       {/* INCOME FORM */}
