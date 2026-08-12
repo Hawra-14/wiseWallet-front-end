@@ -29,14 +29,6 @@ const TransactionList = (props) => {
     return (
         <main>
             <h1>All Transactions</h1>
-            <div>
-                <input type="search"
-                    id="mySearch"
-                    name="q"
-                    placeholder="Search the site…" />
-
-                <button>Search</button>
-            </div>
             {props.transactions.map((transaction) => (
                 transaction.userId._id === props.user._id ? (
                     <Link to={`/transactions/${transaction._id}`}>

@@ -91,6 +91,7 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 .choose-button {
   display: flex;
   justify-content: space-between;
@@ -132,43 +133,54 @@ button:disabled {
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
+
 .container {
   border: 0.6px solid navy;
   background-color: aliceblue;
   padding-top: 3.6rem;
   padding-bottom: 3.6rem;
- padding-right: 5rem;
- padding-left: 5rem;
+  padding-right: 5rem;
+  padding-left: 5rem;
   min-width: 100dvh;
   border-radius: 4px;
 }
 
 .budget-container {
   border: 0.6px solid navy;
-  background-color:rgb(250, 245, 240);
+  background-color: rgb(250, 245, 240);
   padding: 3rem;
   border-radius: 4px;
   min-width: 50dvh;
- 
+
 }
 
-.budget-dash{
-   display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 20px;
+.budget-dash {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-.budget-details{
-    border: 0.6px solid navy;
-  background-color:rgb(250, 245, 240);
+.budget-details {
+  border: 0.6px solid navy;
+  background-color: rgb(250, 245, 240);
   padding: 4rem;
   border-radius: 4px;
   min-width: 80dvh;
 }
 
-h2{
+h2, p {
   text-align: center;
+  margin: 0;
 }
+
 .disable {
   display: none;
+}
+
+.balance-container {
+  border: 0.6px solid navy;
+  background-color: aliceblue;
+  padding: 2rem;
+  min-width: 100dvh;
+  border-radius: 4px;
 }
