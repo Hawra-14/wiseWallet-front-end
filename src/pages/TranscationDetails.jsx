@@ -16,7 +16,7 @@ const TransactionDetails = (props) => {
             {transaction.isIncome ? (
                 <p><strong>Income Category:</strong> {transaction.incomeCategory}</p>
             ) : (
-                <p><strong>Expense Category:</strong>{transaction.expenseCategory}</p>
+                <p><strong>Expense Category: </strong>{transaction.expenseCategory}</p>
             )}
             <p>Date: {new Date(transaction.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
 
