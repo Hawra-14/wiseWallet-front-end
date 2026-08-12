@@ -7,8 +7,8 @@ const initialState = {
   isIncome: false,
   name: "",
   month: "",
-  expenseCat: "other",
-  incomeCat: "other",
+  expenseCategory: "other",
+  incomeCategory: "other",
   amount: "",
 };
 
@@ -29,18 +29,18 @@ const Add = (props) => {
   }, [transactionId])
 
   const handleChange = (event) => {
+    console.log(event.target.value);
+
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
     });
   };
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (transactionId) {
-      await props.handleUpdateTransaction(transactionId, formData)
-    } else {
-      await props.handleAddTransaction(formData);
-    }
+    event.preventDefault();    
+    await props.handleAddTransaction(formData);
+    // await props.handleBalance()
+
     setFormData(initialState);
   };
 
@@ -71,7 +71,7 @@ const Add = (props) => {
 
   return (
     <main className="container">
-      <h1>{transactionId ? 'Edit Transaction' : 'Add Transaction'}</h1>
+      <h1>Add Transaction</h1>
 
       <div className="choose-button">
         <button onClick={handleIncome}>Income</button>
@@ -107,8 +107,8 @@ const Add = (props) => {
           <option value="December">December</option>
         </select>
 
-        <label htmlFor="incomeCat">Income Category:</label>
-        <select id="incomeCat" name="incomeCat" value={formData.incomeCat} onChange={handleChange}>
+        <label htmlFor="incomeCategory">Income Category:</label>
+        <select id="incomeCategory" name="incomeCategory" value={formData.incomeCategory} onChange={handleChange}>
           <option value="salary">Salary</option>
           <option value="gift">Gift</option>
           <option value="voucher">Voucher</option>
@@ -153,19 +153,19 @@ const Add = (props) => {
           <option value="December">December</option>
         </select>
 
-        <label htmlFor="expenseCat">Expense Category:</label>
-        <select id="expenseCat" name="expenseCat" value={formData.expenseCat} onChange={handleChange}>
-          <option value="food-and-dining">Food & Dining</option>
+        <label htmlFor="expenseCategory">Expense Category:</label>
+        <select id="expenseCategory" name="expenseCategory" value={formData.expenseCategory} onChange={handleChange}>
+          <option value="food and dining">Food & Dining</option>
           <option value="housing">Housing</option>
           <option value="transportation">Transportation</option>
-          <option value="health-and-fitness">Health & Fitness</option>
+          <option value="health and fitness">Health & Fitness</option>
           <option value="learning">Learning</option>
-          <option value="entertainment-and-subscriptions">
+          <option value="entertainment and subscriptions">
             Entertainment & Subscriptions
           </option>
           <option value="shopping">Shopping</option>
-          <option value="personal-care">Personal Care</option>
-          <option value="fees-and-charges">Fees & Charges</option>
+          <option value="personal care">Personal Care</option>
+          <option value="fees and charges">Fees & Charges</option>
           <option value="travel">Travel</option>
           <option value="other">Other</option>
         </select>

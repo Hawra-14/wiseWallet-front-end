@@ -72,8 +72,8 @@ const UpdateForm = (props) => {
                         <option value="December">December</option>
                     </select>
 
-                    <label htmlFor="incomeCat">Income Category:</label>
-                    <select id="incomeCat" name="incomeCat" value={formData.incomeCat} onChange={handleChange}>
+                    <label htmlFor="incomeCategory">Income Category:</label>
+                    <select id="incomeCategory" name="incomeCategory" value={formData.incomeCategory} onChange={handleChange}>
                         <option value="salary">Salary</option>
                         <option value="gift">Gift</option>
                         <option value="voucher">Voucher</option>
@@ -118,8 +118,8 @@ const UpdateForm = (props) => {
                         <option value="December">December</option>
                     </select>
 
-                    <label htmlFor="expenseCat">Expense Category:</label>
-                    <select id="expenseCat" name="expenseCat" value={formData.expenseCat} onChange={handleChange}>
+                    <label htmlFor="expenseCategory">Expense Category:</label>
+                    <select id="expenseCategory" name="expenseCategory" value={formData.expenseCategory} onChange={handleChange}>
                         <option value="food-and-dining">Food & Dining</option>
                         <option value="housing">Housing</option>
                         <option value="transportation">Transportation</option>
