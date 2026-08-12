@@ -39,8 +39,8 @@ const UpdateForm = (props) => {
     if (!formData) return <p>Loading...</p>
 
     return (
-        <div>
-            <h1>Edit Form</h1>
+        <div className="container">
+            <h1>Edit Transaction</h1>
 
             {formData.isIncome ? (
                 // INCOME EDIT FORM

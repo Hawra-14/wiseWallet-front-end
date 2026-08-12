@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Cause:wght@100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Schoolbell&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cause:wght@100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Schoolbell&display=swap");
 
 :root {
   font-family: "Google Sans Flex", sans-serif;
 
   --lemon-cream: #fff6d6;
-  --coral-reef: #ffb5a7 ;
+  --coral-reef: #ffb5a7;
   --susnset-clay: #e07a5f;
   --morning-sky: #d6e4fa;
-  --ocean-mist: #b7dcd6 ;
+  --ocean-mist: #b7dcd6;
   --golden-dune: #f4d9a6;
   --color-success: #15803d;
   --color-text: #1f2937;
@@ -25,9 +25,8 @@
 body {
   min-height: 100vh;
   margin: 0;
-  /* background-color: var(--color-background); */
-background-image: url(assets/download\ \(4\).jpg);  
-color: var(--color-text);
+  background-image: url(assets/download\ \(4\).jpg);
+  color: var(--color-text);
 }
 
 button {
@@ -44,8 +43,9 @@ img {
   max-width: 100%;
 }
 
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
   margin-top: 0;
 }
-
-

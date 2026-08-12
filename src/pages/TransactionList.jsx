@@ -38,9 +38,9 @@ const TransactionList = (props) => {
                     transaction.userId._id === props.user._id ? (
                         <Link to={`/transactions/${transaction._id}`} key={transaction._id}>
                             <div className={transaction.isIncome ? ("income-card") : ("expense-card")}>
-                                <p>Name: {transaction.name}</p>
-                                <p>Amount: {transaction.amount} BD</p>
-                                <p>{new Date(transaction.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                                <p><strong>Name: {transaction.name}</strong></p>
+                                <p><strong>Amount: {transaction.amount} BD</strong></p>
+                                <p><strong>{new Date(transaction.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</strong></p>
                             </div>
                         </Link>
                     ) : (
