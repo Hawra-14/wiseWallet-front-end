@@ -29,19 +29,21 @@ const TransactionList = (props) => {
     return (
         <main>
             <h1>All Transactions</h1>
-            {props.transactions.map((transaction) => (
-                transaction.userId._id === props.user._id ? (
-                    <Link to={`/transactions/${transaction._id}`}>
-                        <div className={transaction.isIncome ? ("income-card") : ("expense-card")}>
-                            <p>Name: {transaction.name}</p>
-                            <p>Amount: {transaction.amount} BD</p>
-                            <p>Date: {transaction.createdAt}</p>
-                        </div>
-                    </Link>
-                ) : (
-                    false
-                )
-            ))}
+            <div className="transactions">
+                {props.transactions.map((transaction) => (
+                    transaction.userId._id === props.user._id ? (
+                        <Link to={`/transactions/${transaction._id}`}>
+                            <div className={transaction.isIncome ? ("income-card") : ("expense-card")}>
+                                <p>Name: {transaction.name}</p>
+                                <p>Amount: {transaction.amount} BD</p>
+                                <p>{new Date(transaction.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                            </div>
+                        </Link>
+                    ) : (
+                        false
+                    )
+                ))}
+            </div>
         </main>
     )
 }
