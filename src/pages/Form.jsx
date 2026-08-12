@@ -37,10 +37,10 @@ const Add = (props) => {
     });
   };
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formData);
-    
+    event.preventDefault();    
     await props.handleAddTransaction(formData);
+    // await props.handleBalance()
+
     setFormData(initialState);
   };
 
@@ -71,7 +71,7 @@ const Add = (props) => {
 
   return (
     <main className="container">
-      <h1>{transactionId ? 'Edit Transaction' : 'Add Transaction'}</h1>
+      <h1>Add Transaction</h1>
 
       <div className="choose-button">
         <button onClick={handleIncome}>Income</button>
@@ -155,17 +155,17 @@ const Add = (props) => {
 
         <label htmlFor="expenseCategory">Expense Category:</label>
         <select id="expenseCategory" name="expenseCategory" value={formData.expenseCategory} onChange={handleChange}>
-          <option value="food-and-dining">Food & Dining</option>
+          <option value="food and dining">Food & Dining</option>
           <option value="housing">Housing</option>
           <option value="transportation">Transportation</option>
-          <option value="health-and-fitness">Health & Fitness</option>
+          <option value="health and fitness">Health & Fitness</option>
           <option value="learning">Learning</option>
-          <option value="entertainment-and-subscriptions">
+          <option value="entertainment and subscriptions">
             Entertainment & Subscriptions
           </option>
           <option value="shopping">Shopping</option>
-          <option value="personal-care">Personal Care</option>
-          <option value="fees-and-charges">Fees & Charges</option>
+          <option value="personal care">Personal Care</option>
+          <option value="fees and charges">Fees & Charges</option>
           <option value="travel">Travel</option>
           <option value="other">Other</option>
         </select>
