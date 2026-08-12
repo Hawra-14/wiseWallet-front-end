@@ -5,9 +5,17 @@ const TransactionList = (props) => {
     const [search, setSearch] = useState('')
     const [filter, setFilter] = useState('all')
 
-    const filteredTransactions = props.transactions.filter((transaction) =>
-        transaction.name.toLowerCase().includes(search.toLowerCase())
-    )
+    const isThisMonth = (dateString) => {
+        const date = new Date(dateString)
+        const now = new Date()
+        return date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear()
+    }
+
+    const filteredTransactions = props.transactions.filter((transaction) => {
+        const matchesSearch = transaction.name.toLowerCase().includes(search.toLowerCase())
+        const matchesMonth = filter === 'all' ? true : isThisMonth(transaction.date)
+        return matchesSearch && matchesMonth
+    })
 
     return (
         <main>
@@ -19,6 +27,10 @@ const TransactionList = (props) => {
                 onChange={(event) => setSearch(event.target.value)}
             />
             <div>
+                <button onClick={() => setFilter('all')}>All</button>
+                <button onClick={() => setFilter('thisMonth')}>This Month</button>
+            </div>
+            <div>
                 <h3>{props.balance ? `Your Balance is ${props.balance} BD` : `Loading..`}</h3>
             </div>
             <div className="transactions">
@@ -28,7 +40,7 @@ const TransactionList = (props) => {
                             <div className={transaction.isIncome ? ("income-card") : ("expense-card")}>
                                 <p><strong>Name: {transaction.name}</strong></p>
                                 <p><strong>Amount: {transaction.amount} BD</strong></p>
-                                <p><strong>{new Date(transaction.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</strong></p>
+                                <p><strong>{new Date(transaction.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</strong></p>
                             </div>
                         </Link>
                     ) : (
