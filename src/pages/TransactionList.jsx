@@ -33,8 +33,9 @@ const TransactionList = (props) => {
                 transaction.userId._id === props.user._id ? (
                     <Link to={`/transactions/${transaction._id}`}>
                         <div className={transaction.isIncome ? ("income-card") : ("expense-card")}>
-                            <p>Transaction name: {transaction.name}</p>
-                            <p>Transaction amount: {transaction.amount} BD</p>
+                            <p>Name: {transaction.name}</p>
+                            <p>Amount: {transaction.amount} BD</p>
+                            <p>Date: {transaction.createdAt}</p>
                         </div>
                     </Link>
                 ) : (

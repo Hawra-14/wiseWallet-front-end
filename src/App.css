@@ -71,10 +71,6 @@ form input:focus {
   flex: 1;
 }
 
-button:hover {
-  background-color: var(--color-primary-dark);
-}
-
 button {
   background-color: rgba(212, 247, 142);
   color: var(--color-primary);
@@ -113,23 +109,23 @@ button:disabled {
 }
 
 .income-card {
-  /* background-color: green; */
-  width: 100%;
-  max-width: 440px;
-  padding: 32px;
-  background-color: var(--color-surface);
-  border: 3px solid green;
+  display: flex;
+  justify-content: space-evenly;
+  width: 50rem;
+  padding: 1.5rem;
+  background-color: #c7e5d5;
+  border: 3px solid #40a972;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .expense-card {
-  /* background-color: red; */
-  width: 100%;
-  max-width: 440px;
-  padding: 32px;
-  background-color: var(--color-surface);
-  border: 3px solid red;
+  display: flex;
+  justify-content: space-evenly;
+  width: 50rem;
+  padding: 1.5rem;
+  background-color: rgb(238, 218, 218);
+  border: 3px solid #d63b3b;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
@@ -168,13 +164,18 @@ button:disabled {
   min-width: 80dvh;
 }
 
-h2, p {
+h2,
+p {
   text-align: center;
   margin: 0;
 }
 
 .disable {
   display: none;
+}
+
+.transparent-btn {
+  opacity: 0.5;
 }
 
 .balance-container {
