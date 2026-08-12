@@ -141,7 +141,7 @@ const App = () => {
               <Route
                 path="/transactions"
                 element={
-                  <TransactionList transactions={transactions} user={user} />
+                  <TransactionList transactions={transactions} user={user} balance={balance} />
                 }
               />
               <Route

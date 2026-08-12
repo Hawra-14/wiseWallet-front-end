@@ -29,6 +29,9 @@ const TransactionList = (props) => {
     return (
         <main>
             <h1>All Transactions</h1>
+            <div>
+                <h3>{props.balance ? `Your Balance is ${props.balance} BD`: `Loading..`}</h3>
+            </div>
             <div className="transactions">
                 {props.transactions.map((transaction) => (
                     transaction.userId._id === props.user._id ? (
