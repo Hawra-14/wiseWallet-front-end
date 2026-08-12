@@ -18,6 +18,7 @@ import BudgetForm from "./pages/BudgetForm";
 import Budgets from "./pages/Budgets";
 import UpdateForm from "./pages/UpdateForm";
 import BudgetDetails from "./pages/BudgetDetails";
+import UpdateBudget from "./pages/UpdateBudget";
 
 const getUserFromToken = () => {
   const token = localStorage.getItem("token");
@@ -32,31 +33,30 @@ const App = () => {
   const [user, setUser] = useState(getUserFromToken());
   const [transactions, setTransactions] = useState([]);
   const [budgets, setBudgets] = useState([]);
-  const [balance, setBalance] = useState(0)
+  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     const fetchAllTransactions = async () => {
       const transactionsData = await transactionService.index();
 
-      let total = 0
+      let total = 0;
       transactionsData.map((transaction) => {
         if (transaction.userId._id === user._id) {
           if (transaction.isIncome === true) {
-            total += transaction.amount
+            total += transaction.amount;
           } else {
-            total -= transaction.amount
+            total -= transaction.amount;
           }
         } else {
-          <p>No Transaction</p>
+          <p>No Transaction</p>;
         }
-      })
-      setBalance(total)
+      });
+      setBalance(total);
       console.log(balance, "balance");
 
       setTransactions(transactionsData);
     };
     if (user) fetchAllTransactions();
-
   }, [user]);
 
   useEffect(() => {
@@ -71,13 +71,13 @@ const App = () => {
   const handleAddTransaction = async (formData) => {
     const newTransaction = await transactionService.create(formData);
     setTransactions([newTransaction, ...transactions]);
-    let total = balance
+    let total = balance;
     if (formData.isIncome === true) {
-      total += formData.amount
+      total += formData.amount;
     } else {
-      total -= formData.amount
+      total -= formData.amount;
     }
-    setBalance(total)
+    setBalance(total);
     navigate("/transactions");
   };
   const handleUpdateTransaction = async (transactionId, formData) => {
@@ -110,10 +110,7 @@ const App = () => {
   };
 
   const handleUpdateBudget = async (budgetId, formData) => {
-    const updateBudget = await budgetService.update(
-      budgetId,
-      formData,
-    );
+    const updateBudget = await budgetService.update(budgetId, formData);
     setTransactions(updatedTransactionArr);
     navigate(`/transactions/${transactionId}`);
   };
@@ -131,7 +128,9 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={user ? <Dashboard user={user} balance={balance} /> : <Landing />}
+            element={
+              user ? <Dashboard user={user} balance={balance} /> : <Landing />
+            }
           />
           {user ? (
             <>
@@ -170,8 +169,13 @@ const App = () => {
                 }
               />
               <Route
-                path="/budget/:budgetId/edit"
-                element={<UpdateBudget budget={budget} handleUpdateBudget />}
+                path="/budgets/:budgetId/edit"
+                element={
+                  <UpdateBudget
+                    budget={budgets}
+                    handleUpdateBudget={handleUpdateBudget}
+                  />
+                }
               />
               <Route
                 path="/budgets/new"
