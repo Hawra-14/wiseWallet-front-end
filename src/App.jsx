@@ -78,9 +78,25 @@ const App = () => {
     );
     navigate("/transactions");
   };
+
   const handleAddBudget = async (formData) => {
     const newBudget = await budgetService.create(formData);
     setBudgets([newBudget, ...budgets]);
+    navigate("/budgets");
+  };
+
+  const handleUpdateBudget = async (budgetId, formData) => {
+    const updateBudget = await budgetService.update(
+      budgetId,
+      formData,
+    );
+    setTransactions(updatedTransactionArr);
+    navigate(`/transactions/${transactionId}`);
+  };
+
+  const handleDeleteBudget = async (budgetId) => {
+    const deletedBudget = await budgetService.deleteBudget(budgetId);
+    setBudgets(budgets.filter((budget) => budget._id !== budgetId));
     navigate("/budgets");
   };
 
@@ -130,21 +146,27 @@ const App = () => {
                 }
               />
               <Route
+                path="/budget/:budgetId/edit"
+                element={<UpdateBudget budget={budget} handleUpdateBudget />}
+              />
+              <Route
                 path="/budgets/new"
                 element={
-                  <BudgetForm budgets={budgets} user={user} handleAddBudget={handleAddBudget} />
+                  <BudgetForm
+                    budgets={budgets}
+                    user={user}
+                    handleAddBudget={handleAddBudget}
+                  />
                 }
               />
               <Route
                 path="/budgets"
-                element={
-                  <Budgets
-                    user={user}
-                    budgets={budgets}
-                  />
-                }
+                element={<Budgets user={user} budgets={budgets} />}
               />
-              <Route path="/budgets/:budgetId" element={<BudgetDetails user={user} budgets={budgets} />} />
+              <Route
+                path="/budgets/:budgetId"
+                element={<BudgetDetails user={user} budgets={budgets} />}
+              />
             </>
           ) : (
             <>
