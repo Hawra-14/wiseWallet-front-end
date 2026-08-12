@@ -17,6 +17,7 @@ import Form from "./pages/Form";
 import BudgetForm from "./pages/BudgetForm";
 import Budgets from "./pages/Budgets";
 import UpdateForm from "./pages/UpdateForm";
+import BudgetDetails from "./pages/BudgetDetails";
 
 const getUserFromToken = () => {
   const token = localStorage.getItem("token");
@@ -143,6 +144,7 @@ const App = () => {
                   />
                 }
               />
+              <Route path="/budgets/:budgetId" element={<BudgetDetails user={user} budgets={budgets} />} />
             </>
           ) : (
             <>

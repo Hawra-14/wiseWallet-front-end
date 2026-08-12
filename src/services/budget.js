@@ -12,15 +12,14 @@ const index = async () => {
 };
 
 const show = async (budgetId) => {
-  const res = await fetch(`${BASE_URL}/${budgetId}`, {
-    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  });
-  const data = await res.json();
-  if (!res.ok) {
-    throw new Error(`${res.status}: ${data.message}`);
+  try{
+    const res = await fetch(`${BASE_URL}/${budgetId}`, {
+      headers: {Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+    return res.json()
+  } catch(err){
+    console.log(error)
   }
-
-  return data;
 };
 
 const create = async (budgetFormData) => {
@@ -39,4 +38,8 @@ const create = async (budgetFormData) => {
   }
 }
 
-export { index, show, create };
+export {
+    index,
+    show,
+    create
+}
