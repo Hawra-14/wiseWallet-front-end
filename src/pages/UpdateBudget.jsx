@@ -85,12 +85,12 @@ const UpdateBudget = (props) => {
 
         <label htmlFor="description">Description: </label>
         <input
+          id="description"
           type="text"
           name="description"
           value={formData.description}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
-
         <label htmlFor="category">Category: </label>
         <select
           name="category"

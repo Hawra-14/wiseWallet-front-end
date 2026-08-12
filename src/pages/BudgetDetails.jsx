@@ -16,9 +16,9 @@ const BudgetDetails = (props) => {
   if (!budget) return <p>Loading...</p>
   return (
     <main>
-      <h1>Budget Details</h1>
       <div className="budget-details">
-        <h2>{budget.name}</h2>
+      <h1>Budget Details</h1>
+        <p><strong>Name:</strong> {budget.name}</p>
         <p>
           <strong>Amount:</strong> {budget.amount}
         </p>
@@ -31,7 +31,6 @@ const BudgetDetails = (props) => {
         <p>
           <strong>Category:</strong> {budget.category}
         </p>
-      </div>
       {budget.userId._id === props.user._id && (
         <div className="actions">
           <button onClick={() => navigate(`/budgets/${budgetId}/edit`)}>
@@ -42,6 +41,7 @@ const BudgetDetails = (props) => {
           </button>
         </div>
       )}
+      </div>
     </main>
   );
 };
