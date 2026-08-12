@@ -5,7 +5,9 @@ const Dashboard = (props) => {
             <header>
                 <h1>Welcome {props.user.username}!</h1>
             </header>
-            <h1>User Balance = {props.balance}</h1>
+            <div className="balance-container">
+                <h2>Your Balance is {props.balance} BD</h2>
+            </div>
         </section>
     )
 }
