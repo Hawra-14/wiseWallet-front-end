@@ -40,7 +40,7 @@ const TransactionList = (props) => {
                             <div className={transaction.isIncome ? ("income-card") : ("expense-card")}>
                                 <p><strong>Name: {transaction.name}</strong></p>
                                 <p><strong>Amount: {transaction.amount} BD</strong></p>
-                                <p><strong>{new Date(transaction.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</strong></p>
+                                <p><strong>{new Date(transaction.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</strong></p>
                             </div>
                         </Link>
                     ) : (
